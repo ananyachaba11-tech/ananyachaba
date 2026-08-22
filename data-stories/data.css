@@ -1,0 +1,717 @@
+/* =========================================================
+   DATA STORIES
+   Ananya Chaba — Portfolio
+========================================================= */
+
+/* ------------------------------
+   Design tokens
+------------------------------ */
+
+:root {
+  --page-bg: #fbfbf8;
+  --surface: #fffefd;
+
+  --text: #171717;
+  --body-text: #353a36;
+  --muted: #737873;
+
+  --green: #2f5a43;
+  --green-dark: #244936;
+  --green-soft: #edf3ef;
+
+  --orange: #c86428;
+  --orange-dark: #a8501d;
+  --orange-soft: #f6eee7;
+
+  --border: #e0e4e0;
+  --border-hover: #c8d0ca;
+
+  --sidebar-width: 235px;
+
+  --page-gutter: clamp(26px, 4vw, 60px);
+
+  --content-max: 1120px;
+
+  --grid-gap-x: clamp(26px, 3.5vw, 44px);
+  --grid-gap-y: clamp(32px, 4vw, 48px);
+
+  --card-radius: 8px;
+}
+
+/* ------------------------------
+   Base
+------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  min-height: 100vh;
+
+  background: var(--page-bg);
+  color: var(--text);
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 16.5px;
+  line-height: 1.55;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 4px;
+}
+
+/* ------------------------------
+   Site layout
+------------------------------ */
+
+.site-shell {
+  min-height: 100vh;
+}
+
+/* ------------------------------
+   Sidebar
+------------------------------ */
+
+.sidebar {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: var(--sidebar-width);
+  height: 100vh;
+
+  padding: 46px 30px;
+
+  background: var(--page-bg);
+}
+
+.sidebar-inner {
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+/* ------------------------------
+   Name / homepage link
+------------------------------ */
+
+.site-name {
+  display: inline-block;
+
+  width: fit-content;
+
+  color: var(--green);
+
+  text-decoration: none;
+
+  font-size: 1.5rem;
+  font-weight: 700;
+
+  line-height: 1.1;
+
+  letter-spacing: -0.035em;
+
+  transition: color 150ms ease;
+}
+
+.site-name:hover {
+  color: var(--orange);
+}
+
+/* ------------------------------
+   Navigation
+------------------------------ */
+
+.site-nav {
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 5px;
+}
+
+.nav-link {
+  padding: 1px 0;
+
+  color: var(--muted);
+
+  text-decoration: none;
+
+  font-size: 1.03rem;
+
+  transition: color 150ms ease;
+}
+
+.nav-link:hover {
+  color: var(--green);
+}
+
+.nav-link.active,
+.nav-link[aria-current="page"] {
+  color: var(--text);
+
+  font-weight: 700;
+}
+
+/* ------------------------------
+   Main
+------------------------------ */
+
+.main-content {
+  margin-left: var(--sidebar-width);
+
+  padding: 46px var(--page-gutter) 80px;
+}
+
+/* ------------------------------
+   Project grid
+------------------------------ */
+
+.projects {
+  width: min(100%, var(--content-max));
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  column-gap: var(--grid-gap-x);
+  row-gap: var(--grid-gap-y);
+
+  align-items: stretch;
+}
+
+/* ------------------------------
+   Project card
+------------------------------ */
+
+.project-card {
+  min-width: 0;
+  height: 540px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+
+  color: var(--text);
+  text-decoration: none;
+
+  box-shadow:
+    0 2px 6px rgba(27, 29, 27, 0.025),
+    0 9px 26px rgba(27, 29, 27, 0.025);
+}
+
+/* ------------------------------
+   Clickable card
+------------------------------ */
+
+.project-card--link {
+  cursor: pointer;
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.project-card--link:hover {
+  transform: translateY(-3px);
+
+  border-color: var(--border-hover);
+
+  box-shadow:
+    0 4px 10px rgba(27, 29, 27, 0.035),
+    0 15px 34px rgba(27, 29, 27, 0.055);
+}
+
+.project-card--link:focus-visible {
+  outline: 3px solid rgba(47, 90, 67, 0.55);
+  outline-offset: 4px;
+}
+
+/* ------------------------------
+   Static football card
+------------------------------ */
+
+.project-card--static {
+  cursor: default;
+}
+
+/* ------------------------------
+   Media
+------------------------------ */
+
+.project-media {
+  position: relative;
+
+  /*
+    Shorter image area makes the cards
+    feel more rectangular/editorial.
+  */
+  flex: 0 0 210px;
+
+  overflow: hidden;
+
+  background: #f2f2ef;
+
+  border-bottom: 1px solid #eceeeb;
+}
+
+.project-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 350ms ease;
+}
+
+.project-card--link:hover .project-image {
+  transform: scale(1.012);
+}
+
+/* ------------------------------
+   Image crops
+------------------------------ */
+
+.project-image--animal {
+  object-position: center 35%;
+}
+
+.project-image--tb {
+  object-position: center 32%;
+}
+
+.project-image--complaints {
+  object-position: center 45%;
+}
+
+.project-image--football {
+  object-position: center 51%;
+}
+
+/* ------------------------------
+   Columbia logo
+------------------------------ */
+
+.project-logo {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: 58px;
+  height: 58px;
+
+  display: block;
+
+  object-fit: contain;
+
+  background: white;
+
+  border-bottom-left-radius: 4px;
+
+  box-shadow: -2px 2px 7px rgba(0, 0, 0, 0.04);
+}
+
+/* ------------------------------
+   Project content
+------------------------------ */
+
+.project-content {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 22px 25px 20px;
+}
+
+.project-text {
+  min-width: 0;
+}
+
+/* ------------------------------
+   Headline
+------------------------------ */
+
+.project-text h2 {
+  max-width: 97%;
+
+  margin: 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(1.18rem, 1.35vw, 1.42rem);
+
+  font-weight: 700;
+
+  line-height: 1.22;
+
+  letter-spacing: -0.02em;
+}
+
+/* ------------------------------
+   Subtitle
+------------------------------ */
+
+.project-subtitle {
+  max-width: 96%;
+
+  margin: 10px 0 0;
+
+  color: var(--body-text);
+
+  font-size: 0.87rem;
+
+  line-height: 1.48;
+}
+
+/* ------------------------------
+   Footer
+------------------------------ */
+
+.project-footer {
+  margin-top: auto;
+  padding-top: 18px;
+
+  display: flex;
+  flex-direction: column;
+}
+/* ------------------------------
+   Tags
+------------------------------ */
+
+.project-tags {
+  list-style: none;
+
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 7px;
+}
+
+.project-tags li {
+  margin: 0;
+
+  padding: 5px 10px;
+
+  border-radius: 999px;
+
+  font-size: 0.7rem;
+  font-weight: 500;
+
+  line-height: 1.15;
+
+  white-space: nowrap;
+}
+
+/*
+   Restrained orange + green palette.
+
+   Rather than giving every tag a random
+   colour, they alternate between the
+   site's two accent families.
+*/
+
+.project-tags li {
+  color: var(--green-dark);
+  background: var(--green-soft);
+  border: 1px solid #d5e2d8;
+}
+/* ------------------------------
+   Metadata
+------------------------------ */
+
+.project-meta {
+  margin: 11px 0 0;
+
+  color: var(--muted);
+
+  font-size: 0.76rem;
+  font-weight: 400;
+
+  line-height: 1.4;
+}
+
+/* ------------------------------
+   Mid-sized desktop
+------------------------------ */
+
+@media (max-width: 1120px) {
+  :root {
+    --sidebar-width: 220px;
+
+    --page-gutter: clamp(24px, 4vw, 44px);
+
+    --grid-gap-x: 30px;
+    --grid-gap-y: 36px;
+  }
+
+  .sidebar {
+    padding-left: 26px;
+    padding-right: 26px;
+  }
+
+  .project-card {
+    height: 540px;
+  }
+
+  .project-media {
+    flex-basis: 205px;
+  }
+
+  .project-content {
+    padding: 21px 22px 19px;
+  }
+}
+
+/* ------------------------------
+   Tablet
+------------------------------ */
+
+@media (max-width: 900px) {
+  :root {
+    --page-gutter: clamp(22px, 6vw, 42px);
+  }
+
+  /* Sidebar becomes top navigation */
+
+  .sidebar {
+    position: static;
+
+    width: 100%;
+    height: auto;
+
+    padding: 24px var(--page-gutter) 0;
+  }
+
+  .sidebar-inner {
+    gap: 10px;
+  }
+
+  .site-name {
+    font-size: 1.35rem;
+  }
+
+  .site-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    gap: 10px 24px;
+
+    padding-bottom: 13px;
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-link {
+    font-size: 0.95rem;
+  }
+
+  .nav-link.active,
+  .nav-link[aria-current="page"] {
+    color: var(--green);
+  }
+
+  /* Main */
+
+  .main-content {
+    margin-left: 0;
+
+    padding: 32px var(--page-gutter) 60px;
+  }
+
+  /* Cards stack */
+
+  .projects {
+    grid-template-columns: 1fr;
+
+    max-width: 680px;
+
+    row-gap: 32px;
+  }
+
+  .project-card {
+    height: auto;
+    min-height: 485px;
+  }
+
+  .project-media {
+    flex-basis: 235px;
+  }
+}
+
+/* ------------------------------
+   Mobile
+------------------------------ */
+
+@media (max-width: 600px) {
+  :root {
+    --page-gutter: 20px;
+  }
+
+  body {
+    font-size: 16px;
+  }
+
+  .sidebar {
+    padding-top: 18px;
+  }
+
+  .sidebar-inner {
+    gap: 8px;
+  }
+
+  .site-name {
+    font-size: 1.25rem;
+  }
+
+  .site-nav {
+    gap: 8px 18px;
+
+    padding-bottom: 11px;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+  }
+
+  .main-content {
+    padding-top: 26px;
+    padding-bottom: 44px;
+  }
+
+  .projects {
+    row-gap: 26px;
+  }
+
+  .project-card {
+    min-height: 0;
+
+    border-radius: 7px;
+  }
+
+  .project-media {
+    flex: 0 0 190px;
+  }
+
+  .project-content {
+    padding: 19px 18px 18px;
+  }
+
+  .project-text h2 {
+    max-width: 100%;
+
+    font-size: 1.2rem;
+
+    line-height: 1.25;
+  }
+
+  .project-subtitle {
+    max-width: 100%;
+
+    margin-top: 9px;
+
+    font-size: 0.84rem;
+
+    line-height: 1.47;
+  }
+
+  .project-footer {
+    padding-top: 20px;
+  }
+
+  .project-tags {
+    gap: 6px;
+  }
+
+  .project-tags li {
+    padding: 5px 8px;
+
+    font-size: 0.67rem;
+  }
+
+  .project-meta {
+    margin: 10px 0 0;
+
+    color: var(--muted);
+
+    font-size: 0.76rem;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .project-logo {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* ------------------------------
+   Very small mobile
+------------------------------ */
+
+@media (max-width: 390px) {
+  .project-media {
+    flex-basis: 175px;
+  }
+
+  .project-content {
+    padding: 17px 16px 17px;
+  }
+
+  .project-text h2 {
+    font-size: 1.14rem;
+  }
+
+  .project-subtitle {
+    font-size: 0.82rem;
+  }
+}

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Ananya Chaba — data, writing, storytelling and visual journalism."
+    />
+
+    <title>Ananya Chaba</title>
+
+    <link rel="stylesheet" href="home.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header class="top-nav">
+      <nav aria-label="Primary navigation">
+        <a href="about/">About Me</a>
+        <a href="data-stories/">Data Stories</a>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <section class="hero">
+        <div class="hero-copy">
+          <h1>
+            Hi! I’m
+            <span class="typed-wrap">
+              <span class="hero-name" id="typed-name"></span>
+            </span>
+          </h1>
+
+          <p class="hero-location">I am based in Delhi, India.</p>
+
+          <p class="hero-intro">
+            I like to think of myself as a data geek, a writer, a storyteller,
+            and a full-time curious person.
+          </p>
+
+          <div class="hero-links" aria-label="External links">
+            <a
+              href="https://www.linkedin.com/in/ananya-chaba-b32948189/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
+
+            <a
+              href="https://ananyachaba.substack.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Substack
+            </a>
+
+            <a
+              href="https://github.com/ananyachaba11-tech"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        <figure class="hero-image">
+          <img src="images/ananya-photo.jpg" alt="Portrait of Ananya Chaba" />
+        </figure>
+      </section>
+    </main>
+
+    <script>
+      const typedName = document.getElementById("typed-name");
+
+      const text = "Ananya.";
+      let index = 0;
+
+      function typeLetter() {
+        if (index < text.length) {
+          typedName.textContent += text.charAt(index);
+          index += 1;
+
+          window.setTimeout(typeLetter, 150);
+        }
+      }
+
+      window.addEventListener("load", () => {
+        window.setTimeout(typeLetter, 250);
+      });
+    </script>
+  </body>
+</html>
